@@ -1,0 +1,27 @@
+{
+  "name": "StoryTrack — Painel de Produção de Ficção",
+  "short_name": "StoryTrack",
+  "description": "Rastreador visual de progresso para escritores, baseado no método Story Genius.",
+  "lang": "pt-BR",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f6f4ef",
+  "theme_color": "#6d4cc2",
+  "categories": ["productivity", "books"],
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}
