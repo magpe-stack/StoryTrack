@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>StoryTrack — Painel de Produção de Ficção</title>
+  <meta name="description" content="Painel de acompanhamento de progresso para escritores, baseado no método Story Genius.">
+  <meta name="theme-color" content="#6d4cc2">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <img src="icon.svg" alt="" width="36" height="36">
+      <div>
+        <h1>StoryTrack</h1>
+        <span class="tagline">Painel de acompanhamento de produção</span>
+      </div>
+    </div>
+
+    <div class="project-controls">
+      <label class="sr-only" for="projectSelect">Projeto atual</label>
+      <select id="projectSelect" aria-label="Projeto atual"></select>
+      <button type="button" class="btn small" id="btnNew" title="Criar novo projeto">+ Novo</button>
+      <button type="button" class="btn small ghost" id="btnRename" title="Renomear projeto">Renomear</button>
+      <button type="button" class="btn small danger" id="btnDelete" title="Excluir projeto">Excluir</button>
+      <button type="button" class="btn small ghost icon" id="btnTheme" title="Alternar tema claro/escuro" aria-label="Alternar tema">🌙</button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- RESUMO GLOBAL -->
+  <section class="card summary" aria-labelledby="summaryTitle">
+    <h2 id="summaryTitle" class="section-title">Resumo do projeto</h2>
+
+    <div class="overall">
+      <div class="overall-top">
+        <span class="overall-label">Conclusão total do livro</span>
+        <span class="overall-pct" id="globalPct">0%</span>
+      </div>
+      <div class="bar big"><div class="fill" id="globalFill"></div></div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <label for="projStart">Data de início geral</label>
+        <input type="date" id="projStart">
+      </div>
+      <div class="stat">
+        <span class="stat-label">Término final estimado</span>
+        <strong id="globalEnd">—</strong>
+        <small id="globalEndNote">Defina as datas de término das fases</small>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Ritmo diário necessário</span>
+        <strong id="statPace">—</strong>
+        <small id="statPaceNote">palavras por dia</small>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Contagem de palavras</span>
+        <strong id="statWords">0 / 0</strong>
+        <small id="statWordsNote">0% da meta</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPORTAÇÃO -->
+  <section class="card exports" aria-labelledby="exportTitle">
+    <h2 id="exportTitle" class="section-title">Relatórios e backup</h2>
+    <div class="btn-row">
+      <button type="button" class="btn" id="btnExpMd">⬇ Markdown (.md)</button>
+      <button type="button" class="btn" id="btnExpTxt">⬇ Texto (.txt)</button>
+      <button type="button" class="btn" id="btnExpDocx">⬇ Word (.docx)</button>
+      <button type="button" class="btn ghost" id="btnExpJson">💾 Backup (.json)</button>
+      <button type="button" class="btn ghost" id="btnImport">📂 Importar backup</button>
+      <input type="file" id="importFile" accept=".json,application/json" hidden>
+    </div>
+    <p class="hint">O backup JSON inclui todos os projetos. Ao importar, os projetos são adicionados à sua lista, sem apagar os atuais.</p>
+  </section>
+
+  <!-- FASES (renderizadas pelo app.js) -->
+  <div id="phases" class="phases"></div>
+
+</main>
+
+<footer class="footer">
+  <p>StoryTrack · rastreador de progresso inspirado no método <em>Story Genius</em>. Seus dados ficam salvos apenas neste navegador.</p>
+</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html-docx-js/0.3.1/html-docx.min.js" defer></script>
+<script src="app.js" defer></script>
+</body>
+</html>
